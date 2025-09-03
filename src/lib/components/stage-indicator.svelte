@@ -44,7 +44,7 @@
         class="steps steps-horizontal w-full max-w-xs sm:max-w-sm bg-white/95 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20 transition-all duration-300 ease-in-out"
         class:opacity-0 ={!isExpanded}
     >
-        {#each stages as stage}a
+        {#each stages as stage}
             <li
                 class="step text-xs sm:text-sm"
                 class:step-secondary={currentStage > stage.step}

@@ -1,4 +1,4 @@
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: nord --prefersdark, abyss, cupcake, corporate --default;
+  themes: sunset --prefersdark, abyss, cupcake --default;
 }
