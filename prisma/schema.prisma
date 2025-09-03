@@ -1,0 +1,109 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client"
+    output   = "../src/lib/database/prisma-client"
+}
+
+generator prismabox {
+    provider                    = "prismabox"
+    typeboxImportDependencyName = "elysia"
+    typeboxImportVariableName   = "t"
+    inputModel                  = true
+    output                      = "../src/lib/database/prismabox"
+}
+
+model Profile {
+    id         String @id @default(cuid())
+    user       User?
+    userId     String @unique
+    name       String
+    gender     Gender
+    studentNum String
+    phone      String
+    qq         String
+
+    school     String
+    major      String
+    intention  String
+    reason     String
+    bio        String
+    interest   String
+    skills     String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("profile")
+}
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+model User {
+    id            String    @id
+    name          String
+    email         String
+    emailVerified Boolean
+    image         String?
+    createdAt     DateTime
+    updatedAt     DateTime
+    profileId     String?
+    profile       Profile?  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+    sessions      Session[]
+    accounts      Account[]
+
+    @@unique([email])
+    @@unique([profileId])
+    @@map("user")
+}
+
+model Session {
+    id        String   @id
+    expiresAt DateTime
+    token     String
+    createdAt DateTime
+    updatedAt DateTime
+    ipAddress String?
+    userAgent String?
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([token])
+    @@map("session")
+}
+
+model Account {
+    id                    String    @id
+    accountId             String
+    providerId            String
+    userId                String
+    user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    accessToken           String?
+    refreshToken          String?
+    idToken               String?
+    accessTokenExpiresAt  DateTime?
+    refreshTokenExpiresAt DateTime?
+    scope                 String?
+    password              String?
+    createdAt             DateTime
+    updatedAt             DateTime
+
+    @@map("account")
+}
+
+model Verification {
+    id         String    @id
+    identifier String
+    value      String
+    expiresAt  DateTime
+    createdAt  DateTime?
+    updatedAt  DateTime?
+
+    @@map("verification")
+}
