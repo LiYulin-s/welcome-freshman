@@ -42,7 +42,7 @@
                     <GraduationCap class="w-8 h-8 text-primary" />
                 </div>
                 <h2 class="text-2xl font-bold text-base-content mb-2">
-                    欢迎使用迎新系统
+                    欢迎使用足基软件组迎新系统
                 </h2>
                 <p class="text-base-content/70">
                     请输入您的学校邮箱完成身份验证
@@ -108,7 +108,7 @@
                         <div class="text-sm text-info-content">
                             <p class="font-medium mb-1">温馨提示</p>
                             <p>
-                                请使用您的学校邮箱进行验证，我们将发送验证码到您的邮箱
+                                请使用您的学校邮箱进行验证，我们将发送验证链接到您的邮箱
                             </p>
                         </div>
                     </div>
