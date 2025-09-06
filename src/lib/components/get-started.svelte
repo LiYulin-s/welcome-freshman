@@ -42,7 +42,7 @@
                     <GraduationCap class="w-8 h-8 text-primary" />
                 </div>
                 <h2 class="text-2xl font-bold text-base-content mb-2">
-                    欢迎使用足基软件组迎新系统
+                    欢迎使用足基软件组报名系统
                 </h2>
                 <p class="text-base-content/70">
                     请输入您的学校邮箱完成身份验证

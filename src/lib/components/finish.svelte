@@ -40,7 +40,7 @@
                         {/if}
                     </p>
                     <p class="text-base-content/60">
-                        您已成功完成迎新系统的注册流程
+                        您已成功完成报名系统的报名流程
                     </p>
                 </div>
             </div>
