@@ -15,8 +15,8 @@
     interface EditProps {
         onSave: (profile: Profile) => Promise<void>;
         onBack?: () => void;
-        frozen: boolean;
         initialData?: Partial<Profile>;
+        busy: boolean;
     }
 
     let props: EditProps = $props();
@@ -599,12 +599,13 @@
                     <button
                         type="submit"
                         class="btn btn-primary"
-                        disabled={!isValid || props.frozen}
+                        disabled={!isValid || props.busy}
                     >
-                        <Save class="w-4 h-4" />
-                        {#if props.frozen}
+                        {#if props.busy}
+                            <span class="loading loading-spinner"></span>
                             保存中...
                         {:else}
+                            <Save class="w-4 h-4" />
                             保存信息
                         {/if}
                     </button>

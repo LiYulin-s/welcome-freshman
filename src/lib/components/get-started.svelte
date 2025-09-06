@@ -11,6 +11,7 @@
 
     interface VerifyEmailProps {
         onEmailSubmit: (email: string) => Promise<void>;
+        busy: boolean;
     }
     let props: VerifyEmailProps = $props();
     let email: string = $state("");
@@ -81,9 +82,12 @@
                             class="btn btn-primary btn-lg join-item px-6 transition-all duration-200 hover:scale-105"
                             class:btn-disabled={!isValid}
                             onclick={handleSubmit}
+                            disabled={ props.busy || !isValid }
                         >
-                            {#if isValid}
-                                <CheckCircle2 class="w-5 h-5" />
+                            {#if isValid && !props.busy}
+                                <CheckCircle2 class="w-5 h-5"/>
+                            {:else if props.busy}
+                                <span class="loading loading-spinner loading-sm"></span>
                             {:else}
                                 <CircleX class="w-5 h-5" />
                             {/if}
